@@ -1,0 +1,759 @@
+<title>Дизель Транс Компані</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F3EC;
+    --surface:#FFFFFF;
+    --surface-2:#EEE8DA;
+    --ink:#152331;
+    --ink-muted:#57697B;
+    --primary:#0C447C;
+    --primary-deep:#082E54;
+    --primary-2:#185FA5;
+    --accent:#EF9F27;
+    --accent-ink:#4A2F07;
+    --line:#E1D9C6;
+    --line-strong:#CDC2A6;
+    --shadow: 0 18px 40px -22px rgba(12,68,124,0.35);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0A1520;
+      --surface:#101E2C;
+      --surface-2:#16283A;
+      --ink:#ECEEE8;
+      --ink-muted:#9FB1C1;
+      --primary:#5C9BD3;
+      --primary-deep:#0A2A47;
+      --primary-2:#7FB6E3;
+      --accent:#F3B75E;
+      --accent-ink:#2A1B04;
+      --line:#22364A;
+      --line-strong:#2C4460;
+      --shadow: 0 18px 40px -20px rgba(0,0,0,0.55);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0A1520;
+    --surface:#101E2C;
+    --surface-2:#16283A;
+    --ink:#ECEEE8;
+    --ink-muted:#9FB1C1;
+    --primary:#5C9BD3;
+    --primary-deep:#123A63;
+    --primary-2:#7FB6E3;
+    --accent:#F3B75E;
+    --accent-ink:#2A1B04;
+    --line:#22364A;
+    --line-strong:#2C4460;
+    --shadow: 0 18px 40px -20px rgba(0,0,0,0.55);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Big Shoulders Display","Arial Narrow",sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  .mono{ font-family:"JetBrains Mono", ui-monospace, monospace; }
+  a{color:var(--primary-2);}
+  img{max-width:100%;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-inline:24px;
+  }
+  section{padding-block:88px;}
+  @media (max-width:720px){ section{padding-block:56px;} }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:"JetBrains Mono", monospace;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    background:color-mix(in srgb, var(--accent) 22%, transparent);
+    border:1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    padding:6px 14px;
+    border-radius:999px;
+  }
+  :root[data-theme="dark"] .eyebrow{ color:var(--accent); }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .eyebrow{ color:var(--accent); } }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:active{ transform:translateY(1px); }
+  .btn-accent{
+    background:var(--accent);
+    color:var(--accent-ink);
+    box-shadow:0 10px 24px -10px color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+  .btn-accent:hover{ filter:brightness(1.05); box-shadow:0 14px 28px -10px color-mix(in srgb, var(--accent) 80%, transparent); }
+  .btn-ghost{
+    background:transparent;
+    border-color:rgba(255,255,255,0.4);
+    color:#fff;
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,0.1); }
+  .btn-line{
+    background:transparent;
+    border-color:var(--line-strong);
+    color:var(--ink);
+  }
+  .btn-line:hover{ border-color:var(--primary-2); color:var(--primary-2); }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:20px; padding-block:12px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); }
+  .brand svg{ width:38px; height:38px; flex:none; }
+  .brand .name{ font-family:"Big Shoulders Display"; font-weight:800; font-size:19px; line-height:1.05; letter-spacing:0.01em; }
+  .brand .name span{ display:block; color:var(--primary-2); }
+  .brand .tag{ display:block; font-family:"JetBrains Mono"; font-size:9.5px; letter-spacing:0.12em; color:var(--ink-muted); text-transform:uppercase; margin-top:2px;}
+
+  nav.main-nav{ display:flex; align-items:center; gap:28px; }
+  nav.main-nav a{
+    color:var(--ink); text-decoration:none; font-weight:600; font-size:14.5px;
+    padding-block:4px; border-bottom:2px solid transparent;
+  }
+  nav.main-nav a:hover{ border-color:var(--accent); color:var(--ink);}
+
+  .header-actions{ display:flex; align-items:center; gap:16px; }
+  .header-phone{ display:flex; flex-direction:column; text-align:right; font-size:13px; color:var(--ink-muted); }
+  .header-phone a{ color:var(--ink); font-weight:700; font-size:15px; text-decoration:none; }
+  .menu-toggle{ display:none; background:none; border:1.5px solid var(--line-strong); border-radius:8px; width:42px; height:42px; align-items:center; justify-content:center; cursor:pointer; }
+  .menu-toggle svg{ width:20px; height:20px; }
+
+  @media (max-width:900px){
+    nav.main-nav{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--surface); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0;
+      padding:8px 24px 16px;
+      display:none;
+    }
+    nav.main-nav.open{ display:flex; }
+    nav.main-nav a{ padding-block:10px; width:100%; border-bottom:1px solid var(--line); }
+    .header-phone{ display:none; }
+    .menu-toggle{ display:flex; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(1100px 520px at 85% -10%, color-mix(in srgb, var(--primary-2) 38%, transparent), transparent 60%),
+      linear-gradient(160deg, var(--primary-deep), var(--primary) 70%);
+    color:#fff;
+    padding-block:96px 84px;
+  }
+  .hero .wrap{ position:relative; z-index:2; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;
+  }
+  @media (max-width:920px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{
+    color:#fff;
+    font-size:clamp(34px, 5.4vw, 60px);
+    line-height:0.98;
+    margin-bottom:20px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--accent); }
+  .hero p.lede{
+    font-size:18px; color:rgba(255,255,255,0.86); max-width:52ch; margin-bottom:32px;
+  }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:44px; }
+  .hero-facts{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:rgba(255,255,255,0.16);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  @media (max-width:560px){ .hero-facts{ grid-template-columns:1fr; } }
+  .hero-facts div{
+    background:rgba(8,25,45,0.35);
+    padding:18px 18px;
+  }
+  .hero-facts .k{ font-family:"Big Shoulders Display"; font-weight:800; font-size:22px; color:var(--accent); letter-spacing:0.02em; }
+  .hero-facts .v{ font-size:13px; color:rgba(255,255,255,0.78); margin-top:2px; }
+
+  .hero-art{ position:relative; display:flex; align-items:center; justify-content:center; }
+  .hero-art svg{ width:100%; max-width:360px; height:auto; }
+
+  /* ---------- Stat / value strip ---------- */
+  .strip{
+    background:var(--surface-2);
+    border-bottom:1px solid var(--line);
+  }
+  .strip .wrap{ padding-block:0; }
+  .strip-row{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:0;
+  }
+  @media (max-width:800px){ .strip-row{ grid-template-columns:1fr; } }
+  .strip-item{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:26px 22px;
+    border-right:1px solid var(--line);
+  }
+  .strip-row .strip-item:last-child{ border-right:none; }
+  @media (max-width:800px){ .strip-item{ border-right:none; border-bottom:1px solid var(--line);} .strip-row .strip-item:last-child{border-bottom:none;} }
+  .strip-item svg{ width:26px; height:26px; flex:none; color:var(--primary-2); margin-top:2px; }
+  .strip-item .t{ font-weight:700; font-size:15px; }
+  .strip-item .d{ font-size:13.5px; color:var(--ink-muted); margin-top:2px; }
+
+  /* ---------- Section headings ---------- */
+  .section-head{ max-width:640px; margin-bottom:44px; }
+  .section-head h2{ font-size:clamp(28px,4vw,40px); margin-top:14px; }
+  .section-head p{ color:var(--ink-muted); font-size:16.5px; margin-top:12px; }
+
+  /* ---------- About ---------- */
+  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-copy p{ color:var(--ink-muted); font-size:16.5px; }
+  .about-copy p + p{ margin-top:16px; }
+  .about-list{ list-style:none; margin:24px 0 0; padding:0; display:grid; gap:12px; }
+  .about-list li{ display:flex; gap:10px; font-size:15px; }
+  .about-list li svg{ width:18px; height:18px; flex:none; color:var(--accent); margin-top:3px; }
+
+  .region-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:26px; box-shadow:var(--shadow);
+  }
+  .region-card h3{ font-size:17px; text-transform:none; letter-spacing:0; font-weight:700; margin-bottom:14px; color:var(--ink);}
+  .region-row{ display:flex; justify-content:space-between; gap:12px; padding-block:10px; border-top:1px solid var(--line); font-size:14.5px; }
+  .region-row:first-of-type{ border-top:none; }
+  .region-row .lbl{ color:var(--ink-muted); }
+  .region-row .val{ font-weight:600; text-align:right; }
+
+  /* ---------- Product / fuel spec ---------- */
+  .product-panel{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:36px; box-shadow:var(--shadow);
+    display:grid; grid-template-columns:1fr 1.3fr; gap:40px;
+  }
+  @media (max-width:860px){ .product-panel{ grid-template-columns:1fr; } }
+  .product-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:color-mix(in srgb, var(--primary-2) 14%, transparent);
+    color:var(--primary-2); border-radius:999px; padding:6px 14px;
+    font-weight:700; font-size:13px; margin-bottom:16px;
+  }
+  .product-panel h3{ font-size:26px; margin-bottom:10px; }
+  .product-panel .lead-text{ color:var(--ink-muted); font-size:15.5px; }
+  table.spec{ width:100%; border-collapse:collapse; font-size:14.5px; }
+  table.spec caption{ text-align:left; font-size:12.5px; color:var(--ink-muted); margin-bottom:10px; font-family:"JetBrains Mono"; letter-spacing:0.04em; text-transform:uppercase;}
+  table.spec th{ text-align:left; color:var(--ink-muted); font-weight:600; padding:9px 10px; border-bottom:1px solid var(--line-strong); font-size:12.5px; text-transform:uppercase; letter-spacing:0.04em; }
+  table.spec td{ padding:11px 10px; border-bottom:1px solid var(--line); }
+  table.spec td.num{ font-family:"JetBrains Mono"; text-align:right; font-variant-numeric:tabular-nums; font-weight:600; color:var(--primary-2); }
+  .spec-wrap{ overflow-x:auto; }
+
+  /* ---------- Advantages ---------- */
+  .adv-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:900px){ .adv-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .adv-grid{ grid-template-columns:1fr; } }
+  .adv-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:26px 22px; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .adv-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); border-color:var(--line-strong); }
+  .adv-card .num{ font-family:"Big Shoulders Display"; font-weight:800; font-size:15px; color:var(--accent); letter-spacing:0.06em; }
+  .adv-card h3{ font-size:19px; text-transform:none; letter-spacing:0; margin-top:8px; margin-bottom:8px; }
+  .adv-card p{ color:var(--ink-muted); font-size:14.5px; margin:0; }
+
+  /* ---------- Process ---------- */
+  .process-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+  @media (max-width:900px){ .process-row{ grid-template-columns:1fr 1fr; gap:28px 20px; } }
+  @media (max-width:560px){ .process-row{ grid-template-columns:1fr; } }
+  .process-step{ position:relative; padding-right:24px; }
+  .process-row .process-step:not(:last-child)::after{
+    content:""; position:absolute; top:22px; right:0; width:22px; height:1px; background:var(--line-strong);
+  }
+  @media (max-width:900px){ .process-row .process-step::after{ display:none; } }
+  .process-step .idx{
+    width:44px; height:44px; border-radius:10px;
+    background:var(--primary); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Big Shoulders Display"; font-weight:800; font-size:19px;
+    margin-bottom:16px;
+  }
+  .process-step h3{ font-size:17px; text-transform:none; letter-spacing:0; margin-bottom:6px; }
+  .process-step p{ color:var(--ink-muted); font-size:14px; margin:0; }
+
+  /* ---------- Delivery ---------- */
+  .delivery-panel{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+    background:linear-gradient(135deg, var(--primary-deep), var(--primary));
+    color:#fff; border-radius:18px; padding:44px; overflow:hidden; position:relative;
+  }
+  @media (max-width:860px){ .delivery-panel{ grid-template-columns:1fr; } }
+  .delivery-panel h2{ color:#fff; font-size:clamp(26px,3.6vw,34px); margin-bottom:14px; }
+  .delivery-panel p{ color:rgba(255,255,255,0.85); font-size:15.5px; }
+  .delivery-list{ list-style:none; margin:22px 0 0; padding:0; display:grid; gap:12px; }
+  .delivery-list li{ display:flex; gap:10px; font-size:14.5px; color:rgba(255,255,255,0.92); }
+  .delivery-list svg{ width:18px; height:18px; color:var(--accent); flex:none; margin-top:3px; }
+  .delivery-art{ display:flex; justify-content:center; }
+  .delivery-art svg{ width:100%; max-width:280px; height:auto; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; align-items:start; }
+  @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:30px;
+    box-shadow:var(--shadow); display:grid; gap:20px;
+  }
+  .contact-item{ display:flex; gap:14px; align-items:flex-start; }
+  .contact-item svg{ width:22px; height:22px; color:var(--primary-2); flex:none; margin-top:2px; }
+  .contact-item .t{ font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-muted); font-family:"JetBrains Mono"; }
+  .contact-item .v{ font-weight:700; font-size:15.5px; }
+  .contact-item .v a{ color:var(--ink); text-decoration:none; }
+  .contact-item .v a:hover{ color:var(--primary-2); }
+  .contact-item .v small{ display:block; font-weight:500; color:var(--ink-muted); font-size:13px; margin-top:2px;}
+
+  form.request-form{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:32px;
+    box-shadow:var(--shadow); display:grid; gap:16px;
+  }
+  form.request-form h3{ font-size:20px; text-transform:none; letter-spacing:0; margin-bottom:4px; }
+  form.request-form .hint{ color:var(--ink-muted); font-size:14px; margin-bottom:6px; }
+  .field{ display:grid; gap:6px; }
+  .field label{ font-size:13px; font-weight:600; color:var(--ink-muted); }
+  .field input, .field textarea{
+    font:inherit; padding:12px 14px; border-radius:8px; border:1.5px solid var(--line-strong);
+    background:var(--bg); color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus{ outline:2px solid var(--primary-2); outline-offset:1px; border-color:var(--primary-2); }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--primary-deep); color:rgba(255,255,255,0.78); padding-block:44px 28px; }
+  .footer-row{ display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; }
+  .footer-brand{ display:flex; align-items:center; gap:10px; color:#fff; }
+  .footer-brand svg{ width:32px; height:32px; }
+  .footer-brand .name{ font-family:"Big Shoulders Display"; font-weight:800; font-size:16px; }
+  footer nav{ display:flex; gap:20px; flex-wrap:wrap; }
+  footer nav a{ color:rgba(255,255,255,0.75); text-decoration:none; font-size:14px; }
+  footer nav a:hover{ color:#fff; }
+  .footer-bottom{ margin-top:30px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.14); font-size:12.5px; color:rgba(255,255,255,0.55); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  .reveal{ opacity:1; }
+</style>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="#home">
+      <svg viewBox="0 0 96 138" fill="none" aria-hidden="true">
+        <path d="M46,14 C46,14 12,58 12,82 C12,106 28,124 46,124 C64,124 80,106 80,82 C80,58 46,14 46,14 Z" fill="var(--primary-2)"/>
+        <path d="M26,66 C26,66 20,80 20,94" stroke="white" stroke-width="4.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+        <line x1="18" y1="78" x2="58" y2="78" stroke="var(--accent)" stroke-width="7.5" stroke-linecap="round"/>
+        <polygon points="54,60 80,78 54,96" fill="var(--accent)"/>
+      </svg>
+      <span class="name">ДІЗЕЛЬ ТРАНС<span>КОМПАНІ</span><span class="tag">Оптова торгівля паливом</span></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#about">Про компанію</a>
+      <a href="#product">Паливо</a>
+      <a href="#advantages">Переваги</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#contact">Контакти</a>
+    </nav>
+    <div class="header-actions">
+      <div class="header-phone">
+        <span>Замовлення палива</span>
+        <a href="tel:+380676176002">+38 067 617 6002</a>
+      </div>
+      <a class="btn btn-accent" href="#contact">Залишити заявку</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Меню" aria-expanded="false" aria-controls="mainNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow" style="background:color-mix(in srgb, var(--accent) 28%, white); border-color:color-mix(in srgb, var(--accent) 45%, white); color:var(--accent-ink);">ТОВ «ДІЗЕЛЬ ТРАНС КОМПАНІ»</span>
+        <h1>Оптові поставки<br><em>дизельного палива</em><br>без посередників</h1>
+        <p class="lede">Пряма робота з постачальником, паливо стандарту Євро-5 та прозорі умови співпраці для аграрних, транспортних і промислових підприємств.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-accent" href="#contact">Залишити заявку</a>
+          <a class="btn btn-ghost" href="tel:+380676176002">Зателефонувати: +38 067 617 6002</a>
+        </div>
+        <div class="hero-facts">
+          <div><div class="k">Євро-5</div><div class="v">ДСТУ 7688:2015 / EN 590</div></div>
+          <div><div class="k">Оптом</div><div class="v">Гнучкі обсяги поставки</div></div>
+          <div><div class="k">Напряму</div><div class="v">Без посередників і націнок</div></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 360" fill="none">
+          <circle cx="160" cy="180" r="150" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+          <circle cx="160" cy="180" r="150" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-dasharray="620" stroke-dashoffset="180" transform="rotate(-90 160 180)"/>
+          <g transform="translate(96,86) scale(1.35)">
+            <path d="M46,14 C46,14 12,58 12,82 C12,106 28,124 46,124 C64,124 80,106 80,82 C80,58 46,14 46,14 Z" fill="rgba(255,255,255,0.94)"/>
+            <line x1="18" y1="78" x2="58" y2="78" stroke="var(--accent)" stroke-width="7" stroke-linecap="round"/>
+            <polygon points="54,60 80,78 54,96" fill="var(--accent)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-row">
+      <div class="strip-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><div class="t">Гарантована якість</div><div class="d">Кожна партія відповідає паспорту якості постачальника</div></div>
+      </div>
+      <div class="strip-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="7" width="14" height="10" rx="1.5"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.8"/><circle cx="17.5" cy="19" r="1.8"/></svg>
+        <div><div class="t">Доставка автоцистернами</div><div class="d">По Запорізькій області та інших регіонах України</div></div>
+      </div>
+      <div class="strip-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-6h6v6"/></svg>
+        <div><div class="t">Юридична чистота</div><div class="d">Офіційний договір поставки, повний пакет документів</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">Про компанію</span>
+        <h2 style="margin-top:14px;">Оптовий трейдер дизельного палива</h2>
+        <div class="about-copy" style="margin-top:20px;">
+          <p>ТОВ «ДІЗЕЛЬ ТРАНС КОМПАНІ» спеціалізується на оптовій торгівлі дизельним паливом для аграрного, транспортного та промислового секторів. Ми будуємо роботу навколо прямих поставок — від постачальника до клієнта — без зайвих посередників у ланцюгу.</p>
+          <p>Компанія зареєстрована та працює у Запоріжжі, обслуговуючи як господарства й підприємства Запорізької області, так і партнерів в інших регіонах України.</p>
+        </div>
+        <ul class="about-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Індивідуальні умови для постійних та великих клієнтів</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Супровідні документи та паспорт якості на кожну партію</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Оперативний зв'язок із менеджером на всіх етапах угоди</li>
+        </ul>
+      </div>
+      <div class="region-card">
+        <h3>Реквізити компанії</h3>
+        <div class="region-row"><span class="lbl">Повна назва</span><span class="val">ТОВ «ДІЗЕЛЬ ТРАНС КОМПАНІ»</span></div>
+        <div class="region-row"><span class="lbl">Напрям діяльності</span><span class="val">Оптова торгівля паливом</span></div>
+        <div class="region-row"><span class="lbl">Юридична адреса</span><span class="val">69035, м. Запоріжжя,<br>вул. Сєдова, б. 3, оф. 3</span></div>
+        <div class="region-row"><span class="lbl">Регіон обслуговування</span><span class="val">Запорізька область, Україна</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="product" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Продукція</span>
+      <h2>Дизельне паливо стандарту Євро-5</h2>
+      <p>Паливо відповідає вимогам ДСТУ 7688:2015 (еквівалент EN 590) — придатне для сучасних дизельних двигунів сільськогосподарської, вантажної та спецтехніки.</p>
+    </div>
+    <div class="product-panel">
+      <div>
+        <span class="product-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-4Z"/></svg>
+          Дизельне паливо Євро-5
+        </span>
+        <h3>Літній та зимовий сорти</h3>
+        <p class="lead-text">Постачаємо паливо помірно-континентального (літнє) та арктичного і зимового класів залежно від сезону та вимог клієнта. Об'єми поставки узгоджуються індивідуально — від разових партій до регулярних графіків завезення.</p>
+      </div>
+      <div class="spec-wrap">
+        <table class="spec">
+          <caption>Основні показники / ДСТУ 7688:2015 · EN 590</caption>
+          <thead><tr><th>Показник</th><th>Норма</th></tr></thead>
+          <tbody>
+            <tr><td>Цетанове число, не менше</td><td class="num">51,0</td></tr>
+            <tr><td>Вміст сірки, мг/кг, не більше</td><td class="num">10,0</td></tr>
+            <tr><td>Густина при 15 °C, кг/м³</td><td class="num">820–845</td></tr>
+            <tr><td>Температура спалаху, °C, не нижче</td><td class="num">55</td></tr>
+            <tr><td>Вміст поліциклічних ароматичних вуглеводнів, %, не більше</td><td class="num">8,0</td></tr>
+            <tr><td>Гранична температура фільтрованості (літо / зима)</td><td class="num">0 / −20 °C</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="advantages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Переваги співпраці</span>
+      <h2>Чому клієнти обирають пряму поставку</h2>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <div class="num">01</div>
+        <h3>Якість палива</h3>
+        <p>Кожна партія супроводжується паспортом якості й відповідає нормам Євро-5.</p>
+      </div>
+      <div class="adv-card">
+        <div class="num">02</div>
+        <h3>Без посередників</h3>
+        <p>Пряма робота з постачальником прибирає зайві націнки в ланцюгу поставки.</p>
+      </div>
+      <div class="adv-card">
+        <div class="num">03</div>
+        <h3>Гнучкі обсяги</h3>
+        <p>Від разової партії для одного господарства до регулярних графіків поставки.</p>
+      </div>
+      <div class="adv-card">
+        <div class="num">04</div>
+        <h3>Прозорі умови</h3>
+        <p>Офіційний договір, узгоджена ціна на партію та повний пакет документів.</p>
+      </div>
+      <div class="adv-card">
+        <div class="num">05</div>
+        <h3>Індивідуальний підхід</h3>
+        <p>Умови оплати та графік доставки узгоджуються під потреби конкретного клієнта.</p>
+      </div>
+      <div class="adv-card">
+        <div class="num">06</div>
+        <h3>Оперативний зв'язок</h3>
+        <p>Менеджер супроводжує заявку від запиту ціни до моменту доставки.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Як ми працюємо</span>
+      <h2>Чотири кроки до поставки</h2>
+    </div>
+    <div class="process-row">
+      <div class="process-step">
+        <div class="idx">01</div>
+        <h3>Заявка</h3>
+        <p>Залишаєте заявку на сайті, телефоном або поштою — вказуєте обсяг і бажані терміни.</p>
+      </div>
+      <div class="process-step">
+        <div class="idx">02</div>
+        <h3>Комерційна пропозиція</h3>
+        <p>Менеджер узгоджує ціну на партію, сорт палива та умови оплати.</p>
+      </div>
+      <div class="process-step">
+        <div class="idx">03</div>
+        <h3>Договір</h3>
+        <p>Оформлюємо договір поставки та пакет супровідних документів.</p>
+      </div>
+      <div class="process-step">
+        <div class="idx">04</div>
+        <h3>Доставка</h3>
+        <p>Паливо доставляється автоцистерною за адресою клієнта в узгоджені терміни.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="delivery">
+  <div class="wrap">
+    <div class="delivery-panel">
+      <div>
+        <span class="eyebrow" style="background:rgba(255,255,255,0.14); border-color:rgba(255,255,255,0.3); color:#fff;">Логістика</span>
+        <h2>Доставка по Запорізькій області та Україні</h2>
+        <p>Організовуємо доставку автоцистернами безпосередньо на об'єкт клієнта — поле, склад чи автопарк. Терміни та маршрут узгоджуються на етапі оформлення заявки.</p>
+        <ul class="delivery-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Доставка власним та партнерським автопарком</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Злив палива на місці за присутності представника клієнта</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Супровідні накладні та документи на кожну поставку</li>
+        </ul>
+      </div>
+      <div class="delivery-art" aria-hidden="true">
+        <svg viewBox="0 0 260 200" fill="none">
+          <rect x="10" y="70" width="140" height="70" rx="6" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <rect x="150" y="90" width="60" height="50" rx="6" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <path d="M210 118 L230 118 L240 132 L240 140 L210 140 Z" fill="rgba(255,255,255,0.16)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <circle cx="55" cy="148" r="12" fill="var(--primary-deep)" stroke="var(--accent)" stroke-width="3"/>
+          <circle cx="115" cy="148" r="12" fill="var(--primary-deep)" stroke="var(--accent)" stroke-width="3"/>
+          <circle cx="222" cy="148" r="10" fill="var(--primary-deep)" stroke="var(--accent)" stroke-width="3"/>
+          <path d="M18 60 h130" stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-dasharray="4 6"/>
+          <path d="M20 44 30 60 10 60Z" fill="var(--accent)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Контакти</span>
+      <h2>Замовити паливо</h2>
+      <p>Залиште заявку — менеджер зв'яжеться з вами для узгодження обсягу, ціни та терміну доставки.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2Z"/></svg>
+          <div><div class="t">Телефон</div>
+            <div class="v"><a href="tel:+380676176002">+38 067 617 6002</a><small>основний номер</small></div>
+            <div class="v" style="margin-top:8px;"><a href="tel:+380503418336">+38 050 341 8336</a><small>додатковий номер</small></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          <div><div class="t">Email</div><div class="v"><a href="mailto:transdieselcom@gmail.com">transdieselcom@gmail.com</a></div></div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z"/></svg>
+          <div><div class="t">Сайт</div><div class="v"><a href="https://dieseltrans.com.ua">dieseltrans.com.ua</a></div></div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="t">Юридична адреса</div><div class="v">69035, м. Запоріжжя,<br>вул. Сєдова, б. 3, оф. 3</div></div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><div class="t">Графік роботи</div><div class="v">Пн–Пт: 09:00–18:00<small>Заявки на email приймаються цілодобово</small></div></div>
+        </div>
+      </div>
+
+      <form class="request-form" id="requestForm">
+        <h3>Залишити заявку</h3>
+        <div class="hint">Форма відкриє поштового клієнта з готовим листом на transdieselcom@gmail.com</div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Ім'я та компанія</label>
+            <input id="f-name" name="name" type="text" placeholder="Іван Петренко, ФГ «Колос»" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Телефон для зв'язку</label>
+            <input id="f-phone" name="phone" type="tel" placeholder="+38 0__ ___ __ __" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-volume">Орієнтовний обсяг та бажаний термін</label>
+          <input id="f-volume" name="volume" type="text" placeholder="напр., 5 000 л, протягом тижня">
+        </div>
+        <div class="field">
+          <label for="f-message">Коментар</label>
+          <textarea id="f-message" name="message" rows="4" placeholder="Місце доставки, сорт палива, додаткові побажання"></textarea>
+        </div>
+        <button type="submit" class="btn btn-accent">Надіслати заявку</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="footer-brand" href="#home">
+        <svg viewBox="0 0 96 138" fill="none" aria-hidden="true">
+          <path d="M46,14 C46,14 12,58 12,82 C12,106 28,124 46,124 C64,124 80,106 80,82 C80,58 46,14 46,14 Z" fill="#fff"/>
+          <line x1="18" y1="78" x2="58" y2="78" stroke="var(--accent)" stroke-width="7.5" stroke-linecap="round"/>
+          <polygon points="54,60 80,78 54,96" fill="var(--accent)"/>
+        </svg>
+        <span class="name">ДІЗЕЛЬ ТРАНС КОМПАНІ</span>
+      </a>
+      <nav>
+        <a href="#about">Про компанію</a>
+        <a href="#product">Паливо</a>
+        <a href="#advantages">Переваги</a>
+        <a href="#delivery">Доставка</a>
+        <a href="#contact">Контакти</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> ТОВ «ДІЗЕЛЬ ТРАНС КОМПАНІ». Всі права захищено.</span>
+      <span>dieseltrans.com.ua · 69035, м. Запоріжжя, вул. Сєдова, б. 3, оф. 3</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('mainNav');
+  if(toggle && nav){
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+    });
+  }
+  var y = document.getElementById('year');
+  if(y){ y.textContent = new Date().getFullYear(); }
+
+  var form = document.getElementById('requestForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('f-name').value.trim();
+      var phone = document.getElementById('f-phone').value.trim();
+      var volume = document.getElementById('f-volume').value.trim();
+      var message = document.getElementById('f-message').value.trim();
+      var subject = 'Заявка на паливо — ' + name;
+      var bodyLines = [
+        'Ім\'я / компанія: ' + name,
+        'Телефон: ' + phone,
+        'Обсяг / термін: ' + (volume || '—'),
+        'Коментар: ' + (message || '—')
+      ];
+      var mailto = 'mailto:transdieselcom@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+      window.location.href = mailto;
+    });
+  }
+})();
+</script>
